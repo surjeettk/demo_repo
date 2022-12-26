@@ -1,0 +1,26 @@
+version: '2'
+services:
+  firefox:
+    image: selenium/node-firefox-debug
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+    ports:
+      - "5905:5900"
+
+  chrome:
+    image: selenium/node-chrome-debug
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+    ports:
+      - "5906:5900"
+
+
+
+  hub:
+    image: selenium/hub:latest
+    ports:
+      - "4444:4444"
